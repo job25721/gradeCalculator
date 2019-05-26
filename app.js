@@ -47,12 +47,12 @@ function addSub(){
 
     var br = document.createElement('br');
     
-    
+    form.appendChild(br);
     form.appendChild(order);
     form.appendChild(input);
     form.appendChild(credit);
     form.appendChild(grade);
-    form.appendChild(br);
+    
     
 }
 
