@@ -46,13 +46,13 @@ function addSub(){
     }
     )
 
-    //removebutton
-    const removeButton = document.createElement('button');
-    removeButton.setAttribute("type","button");
-    removeButton.setAttribute("class","btn-danger delete");
+    // //removebutton
+    // const removeButton = document.createElement('button');
+    // removeButton.setAttribute("type","button");
+    // removeButton.setAttribute("class","btn-danger delete");
    
 
-    removeButton.textContent = "X";
+    // removeButton.textContent = "X";
 
     var br = document.createElement('br');
     
@@ -61,29 +61,29 @@ function addSub(){
     form.appendChild(input);
     form.appendChild(credit);
     form.appendChild(grade);
-    form.appendChild(removeButton);
+    // form.appendChild(removeButton);
     
     
 }
 
-var remove = document.querySelector('.delete').addEventListener('click',remove);
+// var remove = document.querySelector('.delete').addEventListener('click',remove);
 
-function remove(e){
+// function remove(e){
     
-        e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.remove();
-        e.target.previousElementSibling.previousElementSibling.previousElementSibling.remove();
-        e.target.previousElementSibling.previousElementSibling.remove();
-        e.target.previousElementSibling.remove();
-        e.target.remove();
-        count --;
+//         e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.remove();
+//         e.target.previousElementSibling.previousElementSibling.previousElementSibling.remove();
+//         e.target.previousElementSibling.previousElementSibling.remove();
+//         e.target.previousElementSibling.remove();
+//         e.target.remove();
+//         count --;
     
   
  
   
   
-  //console.log(e.target);
+//   //console.log(e.target);
     
-}
+// }
 
 
 var calculateButton = document.querySelector('#calculate').addEventListener('click',calculate);
