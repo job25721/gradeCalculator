@@ -1,14 +1,17 @@
 .name{
-    width: 300px
+    width: 300px;
+    margin : 5px;
     
 }
 
 .credit{
     height: 30px;
+    margin : 5px;
 }
 
 .grade{
     height: 30px;
+    margin : 5px;
 }
 
 .order{
@@ -25,3 +28,7 @@
    padding-left:20px
 }
 
+#output{
+    color: whitesmoke;
+    font-size: 30px;
+}

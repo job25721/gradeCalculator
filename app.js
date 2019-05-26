@@ -1,6 +1,7 @@
 var add = document.querySelector('#add').addEventListener('click',addSub);
 const form = document.querySelector('#myForm');
 var count = 1;
+
 function addSub(){
     count++;
     
@@ -45,6 +46,14 @@ function addSub(){
     }
     )
 
+    //removebutton
+    const removeButton = document.createElement('button');
+    removeButton.setAttribute("type","button");
+    removeButton.setAttribute("class","btn-danger delete");
+   
+
+    removeButton.textContent = "X";
+
     var br = document.createElement('br');
     
     form.appendChild(br);
@@ -52,13 +61,34 @@ function addSub(){
     form.appendChild(input);
     form.appendChild(credit);
     form.appendChild(grade);
+    form.appendChild(removeButton);
     
     
 }
 
+var remove = document.querySelector('.delete').addEventListener('click',remove);
+
+function remove(e){
+    
+        e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.remove();
+        e.target.previousElementSibling.previousElementSibling.previousElementSibling.remove();
+        e.target.previousElementSibling.previousElementSibling.remove();
+        e.target.previousElementSibling.remove();
+        e.target.remove();
+        count --;
+    
+  
+ 
+  
+  
+  //console.log(e.target);
+    
+}
+
+
 var calculateButton = document.querySelector('#calculate').addEventListener('click',calculate);
 
-var output = document.querySelector('#output');
+
 var t;
 function calculate(e){
     console.log(count);
@@ -73,11 +103,38 @@ function calculate(e){
          gradeMultiplySum += c*grade;
          
     }
+    var GPA = gradeMultiplySum/creditSum;
+    if(document.getElementById('output')!==null){
+        document.getElementById('output').remove();
+    }
+    
+    var area = document.querySelector('.area');
+    
+    var div = document.createElement('div');
+    
+    div.setAttribute("id","output");
 
-    //console.log(creditSum);
-    var GPA = gradeMultiplySum/creditSum
-    output.innerHTML = `Your GPA is : ${GPA}`
+    if(GPA < 2){
+        div.setAttribute("class","card bg-danger mb-5");
+    }else if(GPA <3){
+        div.setAttribute("class","card bg-warning mb-5");
+    }else if(GPA <4){
+        div.setAttribute("class","card bg-primary mb-5");
+    }else if(GPA === 4){
+        GPA = "4.00";
+        div.setAttribute("class","card bg-success mb-5");
+    }
+    area.appendChild(div);
 
+    document.querySelector('#output').style.visibility = 'hidden';
+
+    var output = document.querySelector('#output');
+    
+    document.querySelector('#output').style.visibility = '';
+    if(GPA !== "4.00") output.innerHTML = `Your GPA is : ${GPA.toFixed(2)}`;
+    else output.innerHTML = `Your GPA is : ${GPA}`;
+    
+    
     
 }
 
