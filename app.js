@@ -37,7 +37,7 @@ function addSub(){
     grade.setAttribute("class","form-group grade");
     grade.setAttribute("id",`grade${count}`);
 
-    var grades = ["A","B+","B","C+","C","D+","D","F"];
+    var grades = ["A","B+","B","C+","C","D+","D","F","W"];
     var nodeG;
     grades.forEach(g=>{
              nodeG = document.createElement('option');
@@ -97,10 +97,14 @@ function calculate(e){
     for(let i = 1; i<=count; i++){
         var credit = document.getElementById(`cre${i}`).value;
         var grade = convert(document.getElementById(`grade${i}`).value);
+       
          var c = parseInt(credit);
+         if(grade !== -1){
+            creditSum+= c;
+            gradeMultiplySum += c*grade;
+        }
          
-         creditSum+= c;
-         gradeMultiplySum += c*grade;
+         
          
     }
     var GPA = gradeMultiplySum/creditSum;
@@ -147,4 +151,5 @@ function convert(grade){
     else if(grade==="D+") return 1.5;
     else if(grade==="D") return 1;
     else if(grade==="F") return 0;
+    else if(grade==="W") return -1;
 }
