@@ -33,13 +33,12 @@ function EventClick(e){
     if(e.target.classList.contains('delete')){
 
         table.delete(e.target);
-        count--;
+        
     }
 }
 
 
 var add = document.querySelector('#add').addEventListener('click',addSub);
-const form = document.querySelector('#myForm');
 const Table = document.getElementById('myTable');
 
 
@@ -72,7 +71,7 @@ function addSub(){
     grade.setAttribute("class","form-group grade form-control");
     grade.setAttribute("id",`grade${count}`);
 
-    var grades = ["A","B+","B","C+","C","D+","D","F","W"];
+    var grades = ["-","A","B+","B","C+","C","D+","D","F","W"];
     var nodeG;
     grades.forEach(g=>{
              nodeG = document.createElement('option');
@@ -96,35 +95,49 @@ function addSub(){
 }
 
 
-var calculateButton = document.querySelector('#calculate').addEventListener('click',calculate);
+var calculateButton = document.querySelector('.row').addEventListener('input',calculate);
 
 
-var t;
+
+
 function calculate(e){
-    console.log(count);
     var creditSum=0;
     var gradeMultiplySum=0;
     for(let i = 1; i<=count; i++){
-        var credit = document.getElementById(`cre${i}`).value;
-        var grade = convert(document.getElementById(`grade${i}`).value);
-       
-         var c = parseInt(credit);
-         if(grade !== -1){
+        
+        if(document.getElementById(`cre${i}`)!==null){
+            var credit = document.getElementById(`cre${i}`).value;
+             var grade = convert(document.getElementById(`grade${i}`).value);
+        
+            var c = parseInt(credit);
+            if(grade !== -1){
             creditSum+= c;
             gradeMultiplySum += c*grade;
+            }
         }
+        
+        
+         
     }
     
     var GPA = gradeMultiplySum/creditSum;
     if(document.getElementById('output')!==null){
         document.getElementById('output').remove();
     }
+
+    if(document.getElementById('creditSum')!==null){
+        document.getElementById('creditSum').remove();
+    }
     
     var area = document.querySelector('.area');
     
     var div = document.createElement('div');
+    var div2 = document.createElement('div');
     
     div.setAttribute("id","output");
+    div2.setAttribute("id","creditSum");
+    div2.setAttribute("class","card bg-success mb-5");
+    
     if(GPA < 2){
         div.setAttribute("class","card bg-danger mb-5");
     }else if(GPA <3){
@@ -136,29 +149,43 @@ function calculate(e){
         div.setAttribute("class","card bg-success mb-5");
     }
     area.appendChild(div);
+    area.appendChild(div2);
+
+    
 
     document.querySelector('#output').style.visibility = 'hidden';
-
+    document.querySelector('#creditSum').style.visibility = 'hidden';
     var output = document.querySelector('#output');
+    var creditsum = document.querySelector('#creditSum');
     var yourname = document.getElementById('yourname').value;
-    document.querySelector('#output').style.visibility = '';
-    if(yourname === ''){
-            var name = 'Your';
-    }else{
-            name = yourname+"'s";
-    }
-    
-    if(count > 0) {
+    if(creditSum !== 0){
         
+        document.querySelector('#output').style.visibility = '';
+        document.querySelector('#creditSum').style.visibility = '';
+        
+        if(yourname === ''){
+                var name = 'Your';
+        }else{
+                name = yourname+"'s";
+        }
         if(GPA !== "4.00") output.innerHTML = `${name} GPA is : ${GPA.toFixed(2)}`;
         else output.innerHTML = `${name} GPA is : ${GPA}`;
-        
+
+        creditsum.innerHTML = `หน่วยกิตรวม = ${creditSum}`;
+
+
     }else{
-        if(yourname !== '') name = yourname;
-        else name = ''
+        document.querySelector('#output').style.visibility = '';
+        document.querySelector('#creditSum').style.visibility = '';
+        if(yourname !== null) name = yourname;
+        else name = '';
         div.setAttribute("class","card bg-danger mb-5");
-        output.innerHTML = `${name} !!!! please add some subject `;
+        output.innerHTML = `${name} please add some subject !!!`
+
+        creditsum.innerHTML = `หน่วยกิตรวม = ${creditSum}`;
     }
+   
+        
     
     
     
@@ -173,5 +200,5 @@ function convert(grade){
     else if(grade==="D+") return 1.5;
     else if(grade==="D") return 1;
     else if(grade==="F") return 0;
-    else if(grade==="W") return -1;
+    else if(grade==="W" || grade ==="-") return -1;
 }
