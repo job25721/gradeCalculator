@@ -95,8 +95,8 @@ function addSub(){
 }
 
 
-var calculateButton = document.querySelector('.row').addEventListener('input',calculate);
-
+document.querySelector('.row').addEventListener('input',calculate);
+document.querySelector('.row').addEventListener('click',calculate);
 
 
 
