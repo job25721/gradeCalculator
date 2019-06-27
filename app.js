@@ -1,27 +1,62 @@
+class table{
+    
+    static addtd(tag){
+        const td = document.createElement('td');
+        td.appendChild(tag);
+        return td;
+    }
+
+    static addtr(arr){
+        const tr = document.createElement('tr');
+        arr.forEach(tdTag=>{
+            tr.appendChild(tdTag);
+        })
+        return tr;
+    }
+
+    static visibletoTable(Table,tr){
+        Table.appendChild(tr);
+    }
+
+    static delete(e){
+        if(e.classList.contains('delete')){
+            e.parentElement.parentElement.remove();
+        }
+    }
+}
+var count = 1;
+
+document.getElementById('myTable').addEventListener('click',EventClick);
+
+function EventClick(e){
+    e.preventDefault();
+    if(e.target.classList.contains('delete')){
+
+        table.delete(e.target);
+        count--;
+    }
+}
+
+
 var add = document.querySelector('#add').addEventListener('click',addSub);
 const form = document.querySelector('#myForm');
-var count = 1;
+const Table = document.getElementById('myTable');
+
+
 
 function addSub(){
     count++;
     
-    const order = document.createElement('label');
-    order.setAttribute("id",`o${count}`);
-    order.setAttribute("class","order");
-    order.textContent = count;
-    
-    
-
     const input = document.createElement('input');
     input.setAttribute("type","text");
-    input.setAttribute("class","name form-group");
+    input.setAttribute("class","name form-group form-control");
     input.setAttribute("id",`name${count}`);
-    input.setAttribute("placeholder",`subjectname${count}`);
+    input.setAttribute("placeholder","ชื่อวิชา");
 
     
     //credit
     const credit = document.createElement('select');
-    credit.setAttribute("class","form-group credit");
+    credit.setAttribute("class","form-group credit form-control");
     credit.setAttribute("id",`cre${count}`);
     var credits = [3,2,1];
     var nodeC;
@@ -34,7 +69,7 @@ function addSub(){
 
     //grade
     const grade = document.createElement('select');
-    grade.setAttribute("class","form-group grade");
+    grade.setAttribute("class","form-group grade form-control");
     grade.setAttribute("id",`grade${count}`);
 
     var grades = ["A","B+","B","C+","C","D+","D","F","W"];
@@ -45,45 +80,20 @@ function addSub(){
              grade.appendChild(nodeG);
     }
     )
-
-    // //removebutton
-    // const removeButton = document.createElement('button');
-    // removeButton.setAttribute("type","button");
-    // removeButton.setAttribute("class","btn-danger delete");
-   
-
-    // removeButton.textContent = "X";
-
-    var br = document.createElement('br');
+    //createRemoveButton
+    const Button = document.createElement('button');
+    Button.setAttribute("class","btn btn-danger btn-sm delete form-control");
+    Button.textContent = "X";
     
-    form.appendChild(br);
-    form.appendChild(order);
-    form.appendChild(input);
-    form.appendChild(credit);
-    form.appendChild(grade);
-    // form.appendChild(removeButton);
+
     
+    var arr = [
+        table.addtd(input),table.addtd(credit),table.addtd(grade),table.addtd(Button)
+    ];
     
+    table.visibletoTable(Table,table.addtr(arr));
+
 }
-
-// var remove = document.querySelector('.delete').addEventListener('click',remove);
-
-// function remove(e){
-    
-//         e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.remove();
-//         e.target.previousElementSibling.previousElementSibling.previousElementSibling.remove();
-//         e.target.previousElementSibling.previousElementSibling.remove();
-//         e.target.previousElementSibling.remove();
-//         e.target.remove();
-//         count --;
-    
-  
- 
-  
-  
-//   //console.log(e.target);
-    
-// }
 
 
 var calculateButton = document.querySelector('#calculate').addEventListener('click',calculate);
@@ -103,10 +113,8 @@ function calculate(e){
             creditSum+= c;
             gradeMultiplySum += c*grade;
         }
-         
-         
-         
     }
+    
     var GPA = gradeMultiplySum/creditSum;
     if(document.getElementById('output')!==null){
         document.getElementById('output').remove();
@@ -117,7 +125,6 @@ function calculate(e){
     var div = document.createElement('div');
     
     div.setAttribute("id","output");
-
     if(GPA < 2){
         div.setAttribute("class","card bg-danger mb-5");
     }else if(GPA <3){
@@ -133,10 +140,25 @@ function calculate(e){
     document.querySelector('#output').style.visibility = 'hidden';
 
     var output = document.querySelector('#output');
-    
+    var yourname = document.getElementById('yourname').value;
     document.querySelector('#output').style.visibility = '';
-    if(GPA !== "4.00") output.innerHTML = `Your GPA is : ${GPA.toFixed(2)}`;
-    else output.innerHTML = `Your GPA is : ${GPA}`;
+    if(yourname === ''){
+            var name = 'Your';
+    }else{
+            name = yourname+"'s";
+    }
+    
+    if(count > 0) {
+        
+        if(GPA !== "4.00") output.innerHTML = `${name} GPA is : ${GPA.toFixed(2)}`;
+        else output.innerHTML = `${name} GPA is : ${GPA}`;
+        
+    }else{
+        if(yourname !== '') name = yourname;
+        else name = ''
+        div.setAttribute("class","card bg-danger mb-5");
+        output.innerHTML = `${name} !!!! please add some subject `;
+    }
     
     
     

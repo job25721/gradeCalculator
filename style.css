@@ -1,32 +1,27 @@
+.container-fluid {
+    max-width: 1500px;
+}
+
 .name{
     width: 300px;
-    margin : 5px;
+    
     
 }
 
 .credit{
     height: 30px;
-    margin : 5px;
+    
 }
 
 .grade{
     height: 30px;
-    margin : 5px;
+   
 }
 
-.order{
-    margin: 20px
 
-    
-}
 
-#c{
-    padding-left: 43%
-}
 
-#n{
-   padding-left:20px
-}
+
 
 #output{
     color: whitesmoke;

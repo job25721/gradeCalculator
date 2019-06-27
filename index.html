@@ -15,41 +15,60 @@
     
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
            
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h1 class="display-4 text-center mb-4">GPA CALCULATOR</h1>
+                <h1 class="display-4 text-center mb-4"> <label style="color:red">GPA</label>|CALCULATOR</h1>
                 <h2 class="display-5 text-center mb-4">Created by JOB'Pathomporn</h2>
-                <span style="font-size: 20px">No.</span>
-                <span id="n" style="font-size: 20px">name</span>
-                <span id="c" style="font-size: 20px">credit</span>
-                <span id="g" style="font-size: 20px">grade</span>
+                <br>
+            
+                <input type="text" class="form-control"  id="yourname" placeholder="Your name" style="width:500px; ">
+                
             <form action="" id="myForm">
-                <label id="o" class="order">1</label>
-                <input type="text" class="form-group name" placeholder="subjectname" id="name1">
-                <select class="form-group credit" id="cre1">
-                        <option>3</option>
-                        <option>2</option>
-                        <option>1</option>
-            
-                </select>
-                <select class="form-group grade" id="grade1">
-                        <option>A</option>
-                        <option>B+</option>
-                        <option>B</option>
-                        <option>C+</option>
-                        <option>C</option>
-                        <option>D+</option>
-                        <option>D</option>
-                        <option>F</option>
-                        <option>W</option>
-            
-                </select>
-                <!-- <button type="button" class="btn-danger delete" >X</button> -->
+                <table id="myTable" class="table mt-4">
+                    <tr class="head">
+                       
+                        <td style="font-size: 20px">name</td>
+                        <td style="font-size: 20px">Credit</td>
+                        <td style="font-size: 20px">Grade</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                      
+                        <td>
+                            <input type="text" class="form-group name form-control" placeholder="ชื่อวิชา" id="name1">
+                        </td>
+                        <td>
+                                <select class="form-group credit form-control" id="cre1">
+                                        <option>3</option>
+                                        <option>2</option>
+                                        <option>1</option>
+                            
+                                </select>
+                        </td>
+                        <td>
+                                <select class="form-group grade form-control" id="grade1">
+                                        <option>A</option>
+                                        <option>B+</option>
+                                        <option>B</option>
+                                        <option>C+</option>
+                                        <option>C</option>
+                                        <option>D+</option>
+                                        <option>D</option>
+                                        <option>F</option>
+                                        <option>W</option>
+                            
+                                </select>
+                        </td>
+                        <td><button class="btn btn-danger btn-sm delete form-control"> X </button></td>
+                    </tr>
+                    
+                </table>
             </form>
             <br>
-            <button type="button" class="btn btn-danger" id="add" >Add</button>
+            <button type="button" class="btn btn-warning" id="add" style="color: white">Add</button>
             <br>
             <br>
             <button type="submit" id="calculate" class="btn btn-lg btn-success">คำนวน</button>
