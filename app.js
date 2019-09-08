@@ -31,9 +31,7 @@ document.getElementById('myTable').addEventListener('click',EventClick);
 function EventClick(e){
     e.preventDefault();
     if(e.target.classList.contains('delete')){
-
         table.delete(e.target);
-        
     }
 }
 
@@ -202,3 +200,4 @@ function convert(grade){
     else if(grade==="F") return 0;
     else if(grade==="W" || grade ==="-") return -1;
 }
+
