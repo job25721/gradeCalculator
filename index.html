@@ -1,91 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>GPA Calculator</title>
-    
-</head>
-<body>
-    <div class="container-fluid">
-           
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h1 class="display-4 text-center mb-4"> <label style="color:red">GPA</label>|CALCULATOR</h1>
-                <h2 class="display-5 text-center mb-4">Created by JOB'Pathomporn</h2>
-                <br>
-            
-                <input type="text" class="form-control"  id="yourname" placeholder="Your name" style="width:500px; ">
-                
-            <form action="" id="myForm">
-                <table id="myTable" class="table mt-4">
-                    <tr class="head">
-                       
-                        <td style="font-size: 20px">name</td>
-                        <td style="font-size: 20px">Credit</td>
-                        <td style="font-size: 20px">Grade</td>
-                        <td></td>
-                    </tr>
-                    
-                    <tr>
-                      
-                        <td>
-                            <input type="text" class="form-group name form-control" placeholder="ชื่อวิชา" id="name1">
-                        </td>
-                        <td>
-                                <select class="form-group credit form-control" id="cre1">
-                                        <option>3</option>
-                                        <option>2</option>
-                                        <option>1</option>
-                            
-                                </select>
-                        </td>
-                        <td>
-                                <select class="form-group grade form-control" id="grade1">
-                                        <option>-</option>
-                                        <option>A</option>
-                                        <option>B+</option>
-                                        <option>B</option>
-                                        <option>C+</option>
-                                        <option>C</option>
-                                        <option>D+</option>
-                                        <option>D</option>
-                                        <option>F</option>
-                                        <option>W</option>
-                            
-                                </select>
-                        </td>
-                        <td><button class="btn btn-danger btn-sm delete form-control"> X </button></td>
-                    </tr>
-                    
-                </table>
-            </form>
-            <br>
-            <button type="button" class="btn btn-warning" id="add" style="color: white">Add</button>
-            <br>
-            <br>
-            <!-- <button type="submit" id="calculate" class="btn btn-lg btn-success">คำนวน</button> -->
-            <br>
-            <br>
-            <div class="area">
-                
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <title>GPA-Calculator for CMU</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><span style="color: rgb(195, 121, 255)">CMU</span> GPA CALCULATOR</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            </div>
-            
-                
-            </div>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"
+                >GPA CALCULATOR APP</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </li>  
+            <li class="nav-item ml-1">
+              <button class="btn btn-danger" id="logout">Logout</button>
+            </li>        
+          </ul>
         </div>
+      </nav>
+      <div class="app mt-3">
+        <h4 class="mt-3 text-lg" id="name-display"></h4>
+        <div class="table-responsive">
+            <table class="table" id="subject">
+                <thead>
+                    <th>Subject id</th>
+                    <th>Subject</th>
+                    <th>Credit</th>
+                    <th>Expected grade</th>
+                    <th></th>
+                </thead>
+                <tbody class="content">
+                    <tr>
+                        <td style="width:200px"><input type="number" class="form-control"></td>
+                        <td class="w-50"><input type="text" class="form-control"></td>
+                        <td style="width:80px"><select class="form-control" id="credit">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </td>
+                        <td style="width: 10vw;"><select name="grade" id="grade" class="form-control">
+                            <option value="-1">-</option>
+                            <option value="4">A</option>
+                            <option value="3.5">B+</option>
+                            <option value="3">B</option>
+                            <option value="2.5">C+</option>
+                            <option value="2">C</option>
+                            <option value="1.5">D+</option>
+                            <option value="1">D</option>
+                            <option value="0">F</option>
+                            <option value="-1">W</option>
+                        </select></td>
+                        <td><button class="delete btn btn-outline-danger">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex"> 
+            <button class="btn btn-outline-success m-1" id="add">ADD</button>
+            <button class="btn btn-outline-primary m-1" id="save">SAVE</button>
+            <button class="btn btn-primary m-1" id="load">โหลดจากเซฟ <span class="badge badge-light ml-1 saveAlert"></span> </button>
+            <button class="btn btn-outline-danger m-1" id="del">ลบเซฟ</button>
+        </div>
+        <label for="">**หมายเหตุ ถ้าท่านกดเซฟจะอยู่แค่ในเครื่องนี้เท่านั้น</label>
+        <div class="alert alert-primary" id="output">...</div>
+        <!-- <button class="btn btn-success" style="width: 5vw;" id="debug">Debug</button> -->
+      </div>
+        
+        <form action="#" class="input" id="login"> 
+            <h1 id="std-id">Student id</h1>
+            <input type="number" maxlength="9" name="id" class="form-control w-25 ml-3" required>
+            <button class=" ml-3 btn btn-outline-primary">OK</button>
+        </form>
+        
     </div>
-    <script src="app.js"></script>
-</body>
-
+  </body>
+  <script src="./app.js"></script>
 </html>
